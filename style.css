@@ -1,0 +1,376 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    color: #333;
+    padding: 20px 0;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 750px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eaeaea;
+    background-color: #fdfdfd;
+}
+
+.app-header .back-button,
+.app-header .help-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #007aff;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.app-header .help-button {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.app-title {
+    background-color: transparent;
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.timestamp {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    padding: 8px 0;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.main-content {
+    padding: 15px;
+    flex-grow: 1;
+    background-color: #f0f2f5;
+}
+
+.id-card {
+    position: relative; /* Ważne: aby pozycjonowanie absolutne działało wewnątrz */
+    width: 700px; /* Zostawiam szerokość z Twojego kodu */
+    height: 400px; /* Zostawiam wysokość z Twojego kodu */
+    margin-left: -100px; /* Zostawiam marginesy z Twojego kodu */
+    margin-bottom: -180px;
+    margin-top: 10px;
+    max-width: 600px; /* Może być za duża dla 400px app-container, ale zostawiam */
+    background-image: url('tło.png'); /* Upewnij się, że tło.png jest poprawną ścieżką */
+    background-size: 400px;
+    background-position: 82px -150px;
+    border-radius: 12px;
+    padding: 0px;
+    box-shadow: 0px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* Ważne: aby koła wychodzące poza kartę były ucięte */
+    z-index: 1;
+}
+
+/* STYLE DLA KÓŁ W TLE KARTY ID */
+.id-card-background-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Pamiętaj, aby było POD główną zawartością karty */
+    pointer-events: none; /* Aby nie blokowały interakcji z innymi elementami */
+}
+
+.bg-circle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.4); /* Półprzezroczysta biel */
+    border-radius: 50%; /* Tworzy koło */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1); /* Delikatny cień */
+}
+
+.bg-circle img {
+    /* TUTAJ ZMIENIASZ ROZMIAR IKON WEWNĄTRZ KÓŁ */
+    width: 30px; /* Zmniejsz lub zwiększ tę wartość, np. 20px, 25px, 30px */
+    height: 30px; /* Ustaw taką samą wartość jak width, aby ikona była proporcjonalna w kwadracie */
+    opacity: 0.0; /* Półprzezroczystość ikony */
+    /* Ten filtr próbuje zmienić kolor SVG na niebieski. Jeśli nie działa lub nie jest potrzebny, usuń go. */
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(253deg) brightness(97%) contrast(110%);
+    object-fit: contain; /* Upewnia się, że cała ikona jest widoczna i nie jest rozciągnięta */
+}
+
+/* Pozycjonowanie i rozmiar dla każdego koła - dostosuj te wartości! */
+.bg-circle-1 {
+    width: 0px;
+    height: 80px;
+    top: 60px;
+    left: 150px;
+    transform: rotate(15deg);
+}
+
+.bg-circle-2 {
+    width: 90px;
+    height: 90px;
+    top: 150px;
+    right: 20px;
+    transform: rotate(-10deg);
+}
+
+.bg-circle-3 {
+    width: 70px;
+    height: 70px;
+    bottom: 30px;
+    left: 80px;
+    transform: rotate(5deg);
+}
+
+.bg-circle-4 {
+    width: 100px;
+    height: 100px;
+    bottom: -10px;
+    right: 120px;
+    transform: rotate(20deg);
+}
+
+.watermark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="10" fill="rgba(0,0,0,0.05)">RP</text></svg>');
+    background-repeat: repeat;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.id-card-header {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+    padding-left: 4px;
+}
+
+.photo-placeholder {
+    width: 80px; /* Zwiększ szerokość dla zdjęcia i godła */
+    height: 120px; /* Wysokość, aby zmieścić zdjęcie, godło i tekst */
+    background-color: transparent;
+    margin-right: 00px;
+    overflow: visible; /* Zmieniono na visible, aby nic nie było ucinane */
+    display: flex;
+    flex-direction: column; /* Ułoży elementy w kolumnie */
+    align-items: center; /* Wyśrodkuje zawartość w poziomie */
+    padding-top: 10px; /* Odstęp od góry */
+    padding-left: 20px; /* Przesunięcie w prawo, aby całe zdjęcie i godło były widoczne */
+    box-sizing: border-box;
+}
+
+.photo-placeholder img {
+    background-color: transparent;
+    width: 60px; /* Rozmiar zdjęcia */
+    height: 80px; /* Rozmiar zdjęcia */
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 5px; /* Odstęp między zdjęciem a godłem */
+}
+
+.godlo-container {
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.emblem-with-text {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Odstęp między godłem a tekstem */
+    margin-top: 5px; /* Odstęp od zdjęcia */
+    justify-content: center; /* Wyśrodkowuje w poziomie */
+    width: 100%; /* Rozciągnij, aby wyśrodkować w photo-placeholder */
+}
+
+.emblem-img {
+    background-color: transparent;
+    width: 25px; /* Rozmiar godła */
+    height: auto;
+    /* Filtr, aby godło SVG było czarne */
+    filter: brightness(0) saturate(100%);
+}
+
+
+.rp-label {
+    font-size: 8px; /* Rozmiar tekstu */
+    font-weight: 500;
+    color: #000;
+    white-space: nowrap;
+}
+
+.personal-info {
+    margin-left: 100px;
+    margin-top: 0;
+    background-color: transparent;
+    flex-grow: 1;
+}
+.info-field{
+    width: 100px;
+}
+
+.value.name, .value.surname {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.rp-text {
+    font-size: 9px;
+    color: #666;
+    text-align: left;
+    line-height: 1.2;
+    margin-top: -100px; /* Nadal bardzo duża wartość, może to powodować problemy */
+}
+
+.document-status {
+    width: 365px; /* Sprawdź, czy ta szerokość jest odpowiednia dla max-width: 400px app-container */
+    display: flex;
+    align-items: center; /* Zmieniono z 'left' na 'center' */
+    justify-content: flex-start; /* Zmieniono z 'left' na 'flex-start' */
+    padding: 10px;
+    margin-top: 181px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    color: #34a853;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.status-icon {
+    font-size: 18px;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.action-button {
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 500px;
+    padding: 10px 5px;
+    font-size: 10px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 65px;
+    line-height: 1.2;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.action-button:hover {
+    background-color: #f7f7f7;
+    border-color: #c0c0c0;
+    border-radius: 1000px;
+}
+
+.icon-placeholder {
+    font-size: 22px; /* Domyślny rozmiar dla tekstu, ale tu jest img */
+    margin-bottom: 4px;
+    color: #007aff;
+}
+
+/* Właściwe stylowanie dla obrazków w .icon-placeholder */
+.action-button .icon-placeholder img {
+    width: 28px; /* Dopasuj rozmiar ikon w przyciskach */
+    height: 28px; /* Dopasuj rozmiar ikon w przyciskach */
+    object-fit: contain;
+}
+
+
+.app-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-top: 1px solid #eaeaea;
+    background-color: #fdfdfd;
+    margin-top: auto;
+}
+
+.series-number .label {
+    display: block;
+    font-size: 11px;
+    color: #777;
+}
+
+.series-number .value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    letter-spacing: 0.5px;
+}
+
+.copy-button {
+    background-color: #e7f3ff;
+    color: #007aff;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 200px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.copy-button:hover {
+    background-color: #d0e7ff;
+}
+
+/* Style dla animacji flagi - flaga.mp4 */
+.flaga-poprawna-kontener {
+    position: absolute; /* Pozycjonowanie względem .id-card (które ma position: relative;) */
+    top: 200px; /* Dostosuj pozycję pionową */
+    left: 110px; /* Dostosuj pozycję poziomą */
+    width: 80px; /* Dostosuj szerokość flagi */
+    height: auto;
+    z-index: 2; /* Flaga nad tłem, ale może pod tekstem */
+    border-radius: 4px; /* Zaokrąglenie rogów */
+    overflow: hidden; /* Ucięcie, jeśli wideo wychodzi poza kontener */
+}
+
+.flaga-poprawna-wideo {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Wypełnia kontener, może uciąć boki */
+    border-radius: 4px; /* Powtórz zaokrąglenie dla wideo */
+}

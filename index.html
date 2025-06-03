@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mDowód Klon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <button class="back-button" aria-label="Wróć do poprzedniego ekranu">&lt; Wróć</button>
+            <h1 class="app-title">mDowód</h1>
+            <button class="help-button" aria-label="Pomoc">?</button>
+        </header>
+
+        <div class="timestamp" aria-live="polite">
+            Czas: <span id="current-time">9:41:21</span> <span id="current-date">17.02.2024</span>
+        </div>
+        
+        <main class="main-content">
+            <section class="id-card">
+                <div class="watermark"></div>
+
+                <div class="id-cad-background-elements">
+                    <div class="bg-circle bg-circle-1">
+                        <img src="id-card.svg" alt="Ikonka dokumentu">
+                    </div>
+                    <div class="bg-circle bg-circle-2">
+                        <img src="lock.svg" alt="Ikonka wyszukiwania">
+                    </div>
+                    <div class="bg-circle bg-circle-3">
+                        <img src="more.svg" alt="Ikonka prywatności">
+                    </div>
+                    <div class="bg-circle bg-circle-4">
+                        <img src="verify.svg" alt="Ikonka gwiazdy">
+                    </div>
+                </div>
+                <div class="id-card-header">
+                    <div class="photo-placeholder">
+    <img src="Zrzut ekranu 2025-05-18 200142.png" alt="Zdjęcie profilowe">
+    <div class="emblem-with-text">
+        <img src="icons/godlo.svg" class="emblem-img" alt="Godło Polski"> <span class="rp-label"></span>
+    </div>
+</div>
+                    <div class="personal-info">
+                        <div class="info-field">
+                            <span class="value name"></span>
+                            <span class="label"></span>
+                        </div>
+                        <div class="info-field">
+                            <span class="value surname"></span>
+                            <span class="label"></span>
+                        </div>
+                        <div class="info-field">
+                            <span class="value"></span>
+                            <span class="label"></span>
+                        </div>
+                        <div class="info-field">
+                            <span class="value"></span>
+                            <span class="label"></span>
+                        </div>
+                        <div class="info-field">
+                            <span class="value"></span>
+                            <span class="label"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flaga-poprawna-kontener">
+        <video class="flaga-poprawna-wideo" autoplay muted loop playsinline>
+            <source src="flagaa.mp4" type="video/mp4">
+            Przepraszamy, Twoja przeglądarka nie obsługuje odtwarzania wideo.
+        </video>
+    </div>
+            </section>
+
+            <div class="document-status">
+                <span class="status-icon">✓</span>
+                <span>Dokument ważny</span>
+            </div>
+
+            <section class="action-buttons">
+                <button class="action-button">
+                    <div class="icon-placeholder">
+                        <img src="verify.svg" alt="Potwierdź dane">
+                    </div>
+                    <span>Potwierdź<br>swoje dane</span>
+                </button>
+                <button class="action-button">
+                    <div class="icon-placeholder">
+                        <img src="id-card.svg" alt="Dane dowodu osobistego">
+                    </div>
+                    <span>Dane dowodu<br>osobistego</span>
+                </button>
+                <button class="action-button">
+                    <div class="icon-placeholder">
+                        <img src="lock.svg" alt="Zastrzeż PESEL">
+                    </div>
+                    <span>Zastrzeż<br>PESEL</span>
+                </button>
+                <button class="action-button">
+                    <div class="icon-placeholder">
+                        <img src="more.svg" alt="Pozostałe skróty">
+                    </div>
+                    <span>Pozostałe<br>skróty</span>
+                </button>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <div class="series-number">
+                <span class="label">Seria i numer</span>
+                <span class="value">MAAA 80112</span>
+            </div>
+            <button class="copy-button">Kopiuj</button>
+        </footer>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
